@@ -354,10 +354,10 @@
                                     <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
                                     <input
                                         type="text"
-                                        class="form-control py-2 @error('nom') is-invalid @enderror"
+                                        class="form-control py-2 @error('name') is-invalid @enderror"
                                         id="nom"
-                                        name="nom"
-                                        value="{{ old('nom') }}"
+                                        name="name"
+                                        value="{{ old('name') }}"
                                         placeholder="Ex. Mballa"
                                         autocomplete="family-name"
                                         required
@@ -371,10 +371,10 @@
                                     <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
                                     <input
                                         type="text"
-                                        class="form-control py-2 @error('prenom') is-invalid @enderror"
+                                        class="form-control py-2 @error('surname') is-invalid @enderror"
                                         id="prenom"
-                                        name="prenom"
-                                        value="{{ old('prenom') }}"
+                                        name="surname"
+                                        value="{{ old('surname') }}"
                                         placeholder="Ex. Christian"
                                         autocomplete="given-name"
                                         required
@@ -423,9 +423,9 @@
                                 <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                                 <input
                                     type="password"
-                                    class="form-control py-2 @error('mot_de_passe') is-invalid @enderror"
+                                    class="form-control py-2 @error('password') is-invalid @enderror"
                                     id="mot_de_passe"
-                                    name="mot_de_passe"
+                                    name="password"
                                     placeholder="8 caractères minimum"
                                     autocomplete="new-password"
                                     minlength="8"
