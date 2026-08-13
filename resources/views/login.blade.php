@@ -78,17 +78,17 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="#">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="mb-3">
                             <label for="identifiant" class="form-label">Identifiant</label>
                             <div class="input-group input-group-registre">
                                 <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
-                                <input type="text"
+                                <input type="email"
                                     class="form-control py-2 @error('identifiant') is-invalid @enderror"
-                                    id="identifiant" name="identifiant" value="{{ old('identifiant') }}"
-                                    placeholder="Matricule ou adresse e-mail" autocomplete="username" required
+                                    id="identifiant" name="email" value="{{ old('email') }}"
+                                    placeholder="Adresse e-mail" autocomplete="email" required
                                     autofocus>
                             </div>
                         </div>
@@ -98,8 +98,8 @@
                             <div class="input-group input-group-registre">
                                 <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                                 <input type="password"
-                                    class="form-control py-2 @error('mot_de_passe') is-invalid @enderror"
-                                    id="mot_de_passe" name="mot_de_passe" placeholder="••••••••"
+                                    class="form-control py-2 @error('password') is-invalid @enderror"
+                                    id="mot_de_passe" name="password" placeholder="••••••••"
                                     autocomplete="current-password" required>
                                 <button class="btn btn-toggle-pass" type="button" id="basculerMotDePasse"
                                     aria-label="Afficher le mot de passe">

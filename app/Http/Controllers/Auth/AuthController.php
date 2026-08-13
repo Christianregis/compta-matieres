@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -26,6 +27,20 @@ class AuthController extends Controller
             return redirect()->route('connexion')->with('success', 'Inscription reussie. Vous pouvez desormais vous connecter !');
         } else {
             return redirect()->back()->withErrors('Les mots de passe ne sont pas identiques !');
+        }
+    }
+
+    public function login(Request $request)
+    {
+        $validateData = $request->validate([
+            'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string'],
+        ]);
+
+        if (Auth::attempt($validateData)) {
+            dd('Done');
+        } else {
+            return redirect()->back()->withErrors('Email ou mot de passe incorrect !');
         }
     }
 }
