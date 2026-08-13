@@ -16,12 +16,16 @@ class AuthController extends Controller
             'matricule' => ['string', 'string', 'max:300'],
             'email' => ['required', 'string', 'email', 'unique:users,email'],
             'password' => ['required', 'string'],
+            'mot_de_passe_confirmation' => ['required', 'string'],
         ]);
 
-        $user = User::create([
-            ...$validateData
-        ]);
-
-        dd($user);
+        if ($validateData['password'] === $validateData['mot_de_passe_confirmation']) {
+            $user = User::create([
+                ...$validateData,
+            ]);
+            return redirect()->route('connexion')->with('success', 'Inscription reussie. Vous pouvez desormais vous connecter !');
+        } else {
+            return redirect()->back()->withErrors('Les mots de passe ne sont pas identiques !');
+        }
     }
 }

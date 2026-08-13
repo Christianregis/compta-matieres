@@ -1,0 +1,344 @@
+:root {
+    --navy-900: #12283f;
+    --navy-700: #1e4066;
+    --gold-600: #a9782c;
+    --gold-500: #c79a47;
+    --paper: #f2f1ec;
+    --paper-line: #e2dfd3;
+    --ink-900: #1c2530;
+    --ink-600: #4b5665;
+    --green-700: #3b6e4e;
+    --red-700: #b23a2e;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: var(--ink-900);
+}
+
+.font-display {
+    font-family: "Fraunces", serif;
+}
+
+.font-mono {
+    font-family: "IBM Plex Mono", monospace;
+    letter-spacing: 0.02em;
+}
+
+.split-screen {
+    min-height: 100vh;
+}
+
+/* ---------- Left panel : identité institutionnelle ---------- */
+.panel-identite {
+    background: var(--navy-900);
+    color: #fff;
+    padding: 3.5rem 3rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.panel-identite::after {
+    content: "";
+    position: absolute;
+    right: -120px;
+    top: -120px;
+    width: 340px;
+    height: 340px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+}
+
+.panel-identite::before {
+    content: "";
+    position: absolute;
+    right: -40px;
+    bottom: -160px;
+    width: 260px;
+    height: 260px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+}
+
+.brand-mark-light {
+    width: 42px;
+    height: 42px;
+    border: 1.5px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+}
+
+.brand-text-light {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.brand-text-light small {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 0.7rem;
+    color: #9fb3c8;
+}
+
+.panel-identite h1 {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-top: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.panel-identite p.intro {
+    color: #b9c7d6;
+    font-size: 0.95rem;
+    max-width: 24rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Étapes du processus d'accès — ordre réel, donc numérotées */
+.etape {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 0.7rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+    z-index: 1;
+}
+
+.etape:first-of-type {
+    margin-top: 2rem;
+}
+
+.etape-num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gold-500);
+    border: 1px solid var(--gold-500);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.etape span {
+    font-size: 0.86rem;
+    color: #d9e2ea;
+    padding-top: 0.2rem;
+}
+
+.panel-identite .cachet-mini {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: rotate(-8deg);
+    position: relative;
+    z-index: 1;
+}
+
+.cachet-mini-text {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.44rem;
+    letter-spacing: 0.05em;
+    color: var(--gold-500);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* ---------- Right panel : formulaire ---------- */
+.panel-formulaire {
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+.carte-inscription {
+    width: 100%;
+    max-width: 460px;
+}
+
+.carte-inscription .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-600);
+    font-weight: 600;
+}
+
+.carte-inscription h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    color: var(--navy-900);
+    font-size: 1.6rem;
+}
+
+.carte-inscription p.souscription {
+    color: var(--ink-600);
+    font-size: 0.9rem;
+}
+
+.form-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-900);
+}
+
+.form-label .optionnel {
+    font-weight: 500;
+    color: var(--ink-600);
+    font-size: 0.74rem;
+    text-transform: none;
+}
+
+.input-group-registre {
+    background: #fff;
+    border: 1px solid var(--paper-line);
+}
+
+.input-group-registre .input-group-text {
+    background: #fff;
+    border: none;
+    color: var(--ink-600);
+}
+
+.input-group-registre .form-control,
+.input-group-registre .form-select {
+    border: none;
+    box-shadow: none;
+    padding-left: 0;
+}
+
+.input-group-registre .form-control:focus,
+.input-group-registre .form-select:focus {
+    box-shadow: none;
+}
+
+.input-group:focus-within {
+    border-color: var(--navy-700) !important;
+}
+
+.btn-toggle-pass {
+    background: #fff;
+    border: none;
+    color: var(--ink-600);
+}
+
+.form-text-aide {
+    font-size: 0.76rem;
+    color: var(--ink-600);
+}
+
+/* Indicateur de robustesse du mot de passe */
+.robustesse {
+    height: 4px;
+    background: var(--paper-line);
+    margin-top: 0.5rem;
+    overflow: hidden;
+    display: flex;
+    gap: 3px;
+}
+
+.robustesse span {
+    flex: 1;
+    background: var(--paper-line);
+    transition: background 0.2s ease;
+}
+
+.robustesse.niveau-1 span:nth-child(1) {
+    background: var(--red-700);
+}
+
+.robustesse.niveau-2 span:nth-child(1),
+.robustesse.niveau-2 span:nth-child(2) {
+    background: var(--gold-600);
+}
+
+.robustesse.niveau-3 span {
+    background: var(--green-700);
+}
+
+.robustesse-label {
+    font-size: 0.72rem;
+    color: var(--ink-600);
+    margin-top: 0.3rem;
+}
+
+.btn-inscription {
+    background: var(--navy-900);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--navy-900);
+}
+
+.btn-inscription:hover {
+    background: var(--navy-700);
+    color: #fff;
+}
+
+.lien-retour {
+    color: var(--ink-600);
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.lien-retour:hover {
+    color: var(--navy-900);
+}
+
+.lien-navy {
+    color: var(--navy-900);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.lien-navy:hover {
+    color: var(--gold-600);
+}
+
+.alert-erreur {
+    background: #fbeae8;
+    border: 1px solid var(--red-700);
+    color: var(--red-700);
+    font-size: 0.85rem;
+    padding: 0.75rem 1rem;
+}
+
+.alert-info-acces {
+    background: #eff3f7;
+    border: 1px solid var(--navy-700);
+    color: var(--navy-900);
+    font-size: 0.8rem;
+    padding: 0.65rem 0.9rem;
+}

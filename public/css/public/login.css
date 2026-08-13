@@ -1,0 +1,274 @@
+:root {
+    --navy-900: #12283f;
+    --navy-700: #1e4066;
+    --gold-600: #a9782c;
+    --gold-500: #c79a47;
+    --paper: #f2f1ec;
+    --paper-line: #e2dfd3;
+    --ink-900: #1c2530;
+    --ink-600: #4b5665;
+    --red-700: #b23a2e;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: var(--ink-900);
+}
+
+.font-display {
+    font-family: "Fraunces", serif;
+}
+
+.font-mono {
+    font-family: "IBM Plex Mono", monospace;
+    letter-spacing: 0.02em;
+}
+
+.split-screen {
+    min-height: 100vh;
+}
+
+/* ---------- Left panel : identité institutionnelle ---------- */
+.panel-identite {
+    background: var(--navy-900);
+    color: #fff;
+    padding: 3.5rem 3rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.panel-identite::after {
+    content: "";
+    position: absolute;
+    right: -120px;
+    top: -120px;
+    width: 340px;
+    height: 340px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+}
+
+.panel-identite::before {
+    content: "";
+    position: absolute;
+    right: -40px;
+    bottom: -160px;
+    width: 260px;
+    height: 260px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+}
+
+.brand-mark-light {
+    width: 42px;
+    height: 42px;
+    border: 1.5px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+}
+
+.brand-text-light {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.brand-text-light small {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 0.7rem;
+    color: #9fb3c8;
+}
+
+.panel-identite h1 {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-top: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.panel-identite p.intro {
+    color: #b9c7d6;
+    font-size: 0.95rem;
+    max-width: 24rem;
+    position: relative;
+    z-index: 1;
+}
+
+.acces-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.7rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+    z-index: 1;
+}
+
+.acces-item:first-of-type {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin-top: 2rem;
+}
+
+.acces-item i {
+    color: var(--gold-500);
+    width: 20px;
+    margin-top: 0.15rem;
+}
+
+.acces-item span {
+    font-size: 0.86rem;
+    color: #d9e2ea;
+}
+
+.panel-identite .cachet-mini {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: rotate(-8deg);
+    position: relative;
+    z-index: 1;
+}
+
+.cachet-mini-text {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.44rem;
+    letter-spacing: 0.05em;
+    color: var(--gold-500);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* ---------- Right panel : formulaire ---------- */
+.panel-formulaire {
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+.carte-connexion {
+    width: 100%;
+    max-width: 390px;
+}
+
+.carte-connexion .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-600);
+    font-weight: 600;
+}
+
+.carte-connexion h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    color: var(--navy-900);
+    font-size: 1.6rem;
+}
+
+.carte-connexion p.souscription {
+    color: var(--ink-600);
+    font-size: 0.9rem;
+}
+
+.form-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-900);
+}
+
+.input-group-registre {
+    background: #fff;
+    border: 1px solid var(--paper-line);
+}
+
+.input-group-registre .input-group-text {
+    background: #fff;
+    border: none;
+    color: var(--ink-600);
+}
+
+.input-group-registre .form-control {
+    border: none;
+    box-shadow: none;
+    padding-left: 0;
+}
+
+.input-group-registre .form-control:focus {
+    box-shadow: none;
+}
+
+.input-group-registre.focus-within {
+    border-color: var(--navy-700);
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.input-group:focus-within {
+    border-color: var(--navy-700) !important;
+}
+
+.btn-toggle-pass {
+    background: #fff;
+    border: none;
+    color: var(--ink-600);
+}
+
+.btn-connexion {
+    background: var(--navy-900);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--navy-900);
+}
+
+.btn-connexion:hover {
+    background: var(--navy-700);
+    color: #fff;
+}
+
+.lien-retour {
+    color: var(--ink-600);
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.lien-retour:hover {
+    color: var(--navy-900);
+}
+
+.alert-erreur {
+    background: #fbeae8;
+    border: 1px solid var(--red-700);
+    color: var(--red-700);
+    font-size: 0.85rem;
+    padding: 0.75rem 1rem;
+}
