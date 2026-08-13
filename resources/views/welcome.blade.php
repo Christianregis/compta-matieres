@@ -306,7 +306,7 @@
     {{-- ================= NAVBAR ================= --}}
     <nav class="navbar navbar-expand-lg navbar-registre py-3">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="{{ url('/') }}">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('home') }}">
                 <span class="brand-mark">CM</span>
                 <span class="brand-text">
                     Comptabilité-Matières
@@ -322,7 +322,7 @@
                     <li class="nav-item"><a class="nav-link" href="#objectifs">Objectifs</a></li>
                     <li class="nav-item"><a class="nav-link" href="#apropos">À propos</a></li>
                     <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-                        <a href="#" class="btn btn-navy">
+                        <a href="{{ route('connexion') }}" class="btn btn-navy">
                             <i class="fa-solid fa-right-to-bracket me-1"></i> Se connecter
                         </a>
                     </li>
@@ -343,7 +343,7 @@
                         enregistrer les entrées et sorties, et produire des rapports fiables — exportables en un clic.
                     </p>
                     <div class="d-flex flex-wrap gap-3">
-                        <a href="#" class="btn btn-navy btn-lg">
+                        <a href="{{ route('connexion') }}" class="btn btn-navy btn-lg">
                             <i class="fa-solid fa-right-to-bracket me-2"></i>Accéder à la plateforme
                         </a>
                         <a href="#modules" class="btn btn-outline-navy btn-lg">
@@ -357,7 +357,7 @@
                         <div class="fiche-head">
                             <div>
                                 <p class="fiche-code mb-1">FICHE N° SM-2026-0184</p>
-                                <p class="fiche-titre mb-0">Microscope binoculaire — Labo Physique</p>
+                                <p class="fiche-titre mb-0">Projecteur GID 2 — Fac Science UDO</p>
                             </div>
                             <span class="badge-etat bon">BON ÉTAT</span>
                         </div>
@@ -497,7 +497,7 @@
         <div class="container text-center">
             <h2 class="mb-2">Prêt à ouvrir le registre ?</h2>
             <p class="mb-4">Connectez-vous pour accéder à votre espace de gestion des stocks.</p>
-            <a href="#" class="btn btn-light btn-lg fw-semibold">
+            <a href="{{ route('connexion') }}" class="btn btn-light btn-lg fw-semibold">
                 <i class="fa-solid fa-right-to-bracket me-2"></i>Se connecter
             </a>
         </div>
@@ -521,7 +521,7 @@
                 </div>
                 <div class="col-md-3">
                     <p class="fw-semibold text-uppercase mb-2" style="font-size:.75rem; letter-spacing:.06em; color:var(--navy-900);">Accès</p>
-                    <a href="#" class="d-block mb-1" style="color:var(--ink-600); text-decoration:none;">Se connecter</a>
+                    <a href="{{ route('connexion') }}" class="d-block mb-1" style="color:var(--ink-600); text-decoration:none;">Se connecter</a>
                 </div>
             </div>
             <hr style="border-color:var(--paper-line); margin:2rem 0 1rem;">

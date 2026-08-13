@@ -300,7 +300,7 @@
             {{-- ================= PANNEAU IDENTITÉ ================= --}}
             <div class="col-lg-5 panel-identite">
                 <div>
-                    <a href="{{ url('/') }}"
+                    <a href="{{ route('home') }}"
                         class="d-flex align-items-center gap-2 text-decoration-none text-white">
                         <span class="brand-mark-light">CM</span>
                         <span class="brand-text-light">
@@ -396,8 +396,13 @@
                     </form>
 
                     <div class="text-center mt-4">
-                        <a href="{{ url('/') }}" class="lien-retour">
+                        <a href="{{ route('home') }}" class="lien-retour">
                             <i class="fa-solid fa-arrow-left-long me-1"></i> Retour à l'accueil
+                        </a>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="{{ route('inscription') }}" class="lien-retour">
+                            <i class="fa-solid fa-arrow-left-long me-1"></i> Vous n'avez pas encore de compte ?
                         </a>
                     </div>
                 </div>
