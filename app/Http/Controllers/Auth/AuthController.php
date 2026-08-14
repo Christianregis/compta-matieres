@@ -38,7 +38,7 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($validateData)) {
-            dd('Done');
+            return redirect()->route('user.dashboard')->with('success', 'Bienvenue chers Utilisateur');
         } else {
             return redirect()->back()->withErrors('Email ou mot de passe incorrect !');
         }
