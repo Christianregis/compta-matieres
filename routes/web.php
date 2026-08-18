@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\Public\PublicController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [PublicController::class, 'home'])->name('home');
 
 Route::get('/login', function () {
     return view('login');
@@ -21,6 +21,11 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 // Route pour un Utilisateur connecte en tamps que User
-Route::middleware(['auth'])->group(function(){
-    Route::get('/user/index', [DashboardController::class, 'index'])->name('user.dashboard');
+Route::prefix('/user')->middleware(['auth'])->group(function(){
+    Route::get('/index', [DashboardController::class, 'index'])->name('user.dashboard');
+});
+
+// Route pour un Adminstrateur 
+Route::prefix('/admin')->middleware(['auth'])->group(function(){
+    Route::get('/index', [AdminController::class, 'index'])->name('admin.dashboard');
 });

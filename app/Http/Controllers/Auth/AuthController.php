@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enum\User\UserRole;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -38,9 +39,20 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($validateData)) {
-            return redirect()->route('user.dashboard')->with('success', 'Bienvenue chers Utilisateur');
+            $user = Auth::user();
+            if ($user->role == UserRole::ADMIN->value) {
+                return redirect()->route('user.dashboard')->with('success', 'Bienvenue chers Utilisateur');
+            }
+            return redirect()->route('admin.dashboard')->with('success', 'Bienvenue chers Administrateur');
         } else {
             return redirect()->back()->withErrors('Email ou mot de passe incorrect !');
         }
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->invalidate();
+        Auth::logout();
+        return redirect()->route('login')->with('success', 'Vous etes deconnecté !');
     }
 }
