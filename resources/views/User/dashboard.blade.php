@@ -105,31 +105,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Microscope binoculaire</td>
-                                        <td><span class="badge-mouvement badge-entree">Entrée</span></td>
-                                        <td>07</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Chaises de bureau</td>
-                                        <td><span class="badge-mouvement badge-sortie">Sortie</span></td>
-                                        <td>12</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Onduleur 1000VA</td>
-                                        <td><span class="badge-mouvement badge-retour">Retour</span></td>
-                                        <td>02</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Vidéoprojecteur</td>
-                                        <td><span class="badge-mouvement badge-transfert">Transfert</span></td>
-                                        <td>01</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Climatiseur split</td>
-                                        <td><span class="badge-mouvement badge-sortie">Sortie</span></td>
-                                        <td>03</td>
-                                    </tr>
+                                    @foreach ($items as $item)
+                                        <tr>
+                                            <td>{{ $item->name }}</td>
+                                            <td><span class="badge-mouvement badge-entree">{{ $item->stockmovements->first()->movementType->name }}</span></td>
+                                            <td>{{ $item->quantity }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -142,7 +124,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
-    {{--  <script>
+    <script>
         // Ouverture / fermeture du sidebar en version mobile
         const sidebar = document.getElementById('sidebar');
         const btnToggleSidebar = document.getElementById('btnToggleSidebar');
@@ -152,18 +134,7 @@
         });
 
         // Graphique : répartition des matériels par catégorie
-        const donneesCategories = @json(
-            $categoriesChartData ?? [
-                ['label' => 'Matériel informatique', 'total' => 142],
-                ['label' => 'Matériel scientifique de laboratoire', 'total' => 118],
-                ['label' => 'Mobilier', 'total' => 96],
-                ['label' => 'Matériel électrique', 'total' => 84],
-                ['label' => 'Matériel électronique', 'total' => 77],
-                ['label' => 'Matériel de mesure et de précision', 'total' => 61],
-                ['label' => 'Matériel audiovisuel', 'total' => 54],
-                ['label' => 'Outillage technique', 'total' => 48],
-            ]
-        );
+        const donneesCategories = @json($categoriesChartData);
 
         const ctxCategories = document.getElementById('graphiqueCategories');
 
@@ -228,7 +199,7 @@
                 }
             }
         });
-    </script>  --}}
+    </script>
 </body>
 
 </html>

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->integer('quantity');
             $table->date('movement_date');
-            $table->string('note')->nullable();
 
             $table->unsignedBigInteger('item_id');
             $table->unsignedBigInteger('movement_type_id');
