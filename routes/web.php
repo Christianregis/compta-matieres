@@ -29,3 +29,6 @@ Route::prefix('/user')->middleware(['auth'])->group(function(){
 Route::prefix('/admin')->middleware(['auth'])->group(function(){
     Route::get('/index', [AdminController::class, 'index'])->name('admin.dashboard');
 });
+
+// Route pour la deconnection
+Route::middleware('auth')->get('/logout', [AuthController::class, 'logout'])->name('logout');

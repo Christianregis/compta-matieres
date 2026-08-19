@@ -20,91 +20,13 @@
 <body>
 
     {{-- ================= SIDEBAR ================= --}}
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-brand">
-            <span class="sidebar-brand-mark">CM</span>
-            <span class="sidebar-brand-text">
-                Comptabilité-Matières
-                <small>Faculté des Sciences</small>
-            </span>
-        </div>
 
-        <nav class="sidebar-nav">
-            <p class="sidebar-section-title">Gestion des stocks</p>
-            <a href="#" class="sidebar-link active">
-                <i class="fa-solid fa-gauge"></i> Dashboard
-            </a>
-            <a href="#" class="sidebar-link">
-                <i class="fa-solid fa-boxes-stacked"></i> Matériels
-            </a>
-            <a href="#" class="sidebar-link">
-                <i class="fa-solid fa-tags"></i> Catégories
-            </a>
-            <a href="#" class="sidebar-link">
-                <i class="fa-solid fa-circle-check"></i> Statuts
-            </a>
-            <a href="#" class="sidebar-link">
-                <i class="fa-solid fa-right-left"></i> Mouvements
-            </a>
-            <a href="#" class="sidebar-link">
-                <i class="fa-solid fa-chart-column"></i> Rapports
-            </a>
-
-            <p class="sidebar-section-title">Administration</p>
-            <a href="#" class="sidebar-link">
-                <i class="fa-solid fa-user-shield"></i> Utilisateurs
-            </a>
-            <a href="#" class="sidebar-link">
-                <i class="fa-solid fa-sliders"></i> Paramètres
-            </a>
-        </nav>
-
-        <div class="sidebar-footer">
-            © {{ date('Y') }} Université de Douala
-        </div>
-    </aside>
-
+    @include('User.Layouts.Sidebar')
     <div class="main-content">
 
         {{-- ================= TOPBAR ================= --}}
-        <header class="topbar">
-            <div class="d-flex align-items-center gap-3">
-                <button class="btn-toggle-sidebar" id="btnToggleSidebar" aria-label="Ouvrir le menu">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                <div>
-                    <p class="topbar-title">Tableau de bord</p>
-                    <p class="topbar-subtitle">Vue d'ensemble du parc matériel</p>
-                </div>
-            </div>
 
-            <div class="dropdown">
-                <button class="profile-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="profile-icon"><i class="fa-solid fa-user"></i></span>
-                    <span class="profile-name-block text-start">
-                        <span class="profile-name d-block">{{ auth()->user()->name ?? 'Utilisateur' }}</span>
-                        <span class="profile-role">{{ auth()->user()->role ?? 'Agent' }}</span>
-                    </span>
-                    <i class="fa-solid fa-chevron-down" style="font-size:.7rem; color:var(--ink-600);"></i>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-profile">
-                    <li>
-                        <a class="dropdown-item" href="{{ route('profil') }}">
-                            <i class="fa-regular fa-user"></i> Mon profil
-                        </a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a class="dropdown-item text-danger" href="/logout">
-                            <i class="fa-solid fa-right-from-bracket"></i> Déconnexion
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </header>
-
+        @include('User.Layouts.Navbar')
         <div class="page-body">
 
             {{-- ================= ACTIONS ================= --}}
@@ -220,7 +142,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
-    <script>
+    {{--  <script>
         // Ouverture / fermeture du sidebar en version mobile
         const sidebar = document.getElementById('sidebar');
         const btnToggleSidebar = document.getElementById('btnToggleSidebar');
@@ -306,7 +228,7 @@
                 }
             }
         });
-    </script>
+    </script>  --}}
 </body>
 
 </html>

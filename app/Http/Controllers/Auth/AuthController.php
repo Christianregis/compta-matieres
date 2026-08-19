@@ -41,9 +41,9 @@ class AuthController extends Controller
         if (Auth::attempt($validateData)) {
             $user = Auth::user();
             if ($user->role == UserRole::ADMIN->value) {
-                return redirect()->route('user.dashboard')->with('success', 'Bienvenue chers Utilisateur');
+                return redirect()->route('admin.dashboard')->with('success', 'Bienvenue chers Utilisateur');
             }
-            return redirect()->route('admin.dashboard')->with('success', 'Bienvenue chers Administrateur');
+            return redirect()->route('user.dashboard')->with('success', 'Bienvenue chers Administrateur');
         } else {
             return redirect()->back()->withErrors('Email ou mot de passe incorrect !');
         }
