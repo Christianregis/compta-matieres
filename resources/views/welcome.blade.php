@@ -91,19 +91,19 @@
         <div class="container">
             <div class="row text-center gy-4">
                 <div class="col-6 col-lg-3">
-                    <div class="stat-num">1&nbsp;284</div>
+                    <div class="stat-num">{{ $items_count }}</div>
                     <div class="stat-label">FICHES ENREGISTRÉES</div>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <div class="stat-num">96</div>
+                    <div class="stat-num">{{ $stock_movements_count }}</div>
                     <div class="stat-label">MOUVEMENTS CE MOIS</div>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <div class="stat-num">14</div>
+                    <div class="stat-num">{{ $categories_count }}</div>
                     <div class="stat-label">CATÉGORIES SUIVIES</div>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <div class="stat-num">92%</div>
+                    <div class="stat-num">100%</div>
                     <div class="stat-label">TAUX DE DISPONIBILITÉ</div>
                 </div>
             </div>
