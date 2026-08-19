@@ -42,6 +42,7 @@ class CategorySeeder extends Seeder
                 'name' => $name,
                 'created_at' => $now,
                 'updated_at' => $now,
+                'user_id' => 1, // Assuming the admin user has an ID of 1
             ]);
         }
     }

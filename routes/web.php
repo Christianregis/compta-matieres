@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\Public\PublicController;
+use App\Http\Controllers\User\Category\CategoryController;
+use App\Http\Controllers\User\Items\ItemsController;
 
 Route::get('/', [PublicController::class, 'home'])->name('home');
 
@@ -23,6 +25,10 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 // Route pour un Utilisateur connecte en tamps que User
 Route::prefix('/user')->middleware(['auth'])->group(function(){
     Route::get('/index', [DashboardController::class, 'index'])->name('user.dashboard');
+
+    Route::get('/items', [ItemsController::class, 'show'])->name('user.items.show');
+
+    Route::get('/category', [CategoryController::class, 'show'])->name('user.category.show');
 });
 
 // Route pour un Adminstrateur 

@@ -19,11 +19,12 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'admin',
+            'name' => 'ADMIN',
             'surname' => 'adminsitrator',
-            'email' => 'admin@gestionmaterials.com',
-            'password' => bcrypt('password'),
-            'mot_de_passe_confirmation' => 'password',
+            'email' => 'admin@gmail.com',
+            'password' => 'regis@2007',
+            'role' => 'user',
+            'mot_de_passe_confirmation' => 'regis@2007',
             'matricule' => Str::random(10),
         ]);
 

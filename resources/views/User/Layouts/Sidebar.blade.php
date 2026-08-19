@@ -9,13 +9,13 @@
 
         <nav class="sidebar-nav">
             <p class="sidebar-section-title">Gestion des stocks</p>
-            <a href="#" class="sidebar-link active">
+            <a href="{{ route('user.dashboard') }}" class="sidebar-link active">
                 <i class="fa-solid fa-gauge"></i> Dashboard
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('user.items.show') }}" class="sidebar-link">
                 <i class="fa-solid fa-boxes-stacked"></i> Matériels
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('user.category.show') }}" class="sidebar-link">
                 <i class="fa-solid fa-tags"></i> Catégories
             </a>
             <a href="#" class="sidebar-link">

@@ -22,7 +22,7 @@ class DashboardController extends Controller
                 now()->startOfMonth(),
                 now()->endOfMonth()
             ])->count(),
-            'categoriesChartData' => Category::withCount('items')
+            'categoriesChartData' => $user->categories()->withCount('items')
                 ->get()
                 ->map(function ($category) {
                     return [
