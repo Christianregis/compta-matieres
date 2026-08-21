@@ -18,6 +18,13 @@
 </head>
 
 <body>
+
+    @php
+        $activeMenu = 'statuts';
+        $pageTitle = 'Statuts';
+        $pageSubtitle = 'États possibles du matériel';
+    @endphp
+
     @include('User\Layouts\Sidebar')
 
     <div class="main-content">
@@ -70,67 +77,6 @@
                                         </div>
                                     </td>
                                 </tr>
-                                {{-- ================= MODALES MODIFIER / SUPPRIMER ================= --}}
-                                <div class="modal fade" id="modalModifierStatut{{ $status->id }}" tabindex="-1"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content modal-content-registre">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Modifier le statut</h5>
-                                                <button type="button" class="btn-close-registre"
-                                                    data-bs-dismiss="modal" aria-label="Fermer"><i
-                                                        class="fa-solid fa-xmark"></i></button>
-                                            </div>
-                                            <form method="POST" action="#">
-                                                @csrf
-                                                @method('PUT')
-                                                <div class="modal-body">
-                                                    <label for="nom_statut_1" class="form-label">Nom du statut</label>
-                                                    <input type="text" class="form-control"
-                                                        id="nom_statut_{{ $status->name }}" name="name"
-                                                        value="{{ $status->name }}" required>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-outline-navy"
-                                                        data-bs-dismiss="modal">Annuler</button>
-                                                    <button type="submit" class="btn btn-navy"><i
-                                                            class="fa-solid fa-check me-2"></i>Mettre à
-                                                        jour</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" id="modalSupprimerStatut{{ $status->id }}" tabindex="-1"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content modal-content-registre">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Supprimer le statut</h5>
-                                                <button type="button" class="btn-close-registre"
-                                                    data-bs-dismiss="modal" aria-label="Fermer"><i
-                                                        class="fa-solid fa-xmark"></i></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p class="mb-0"><i class="fa-solid fa-triangle-exclamation me-2"
-                                                        style="color:var(--red-700);"></i>Voulez-vous vraiment supprimer
-                                                    le statut <strong>« {{ $status->name }}
-                                                        »</strong> ? Cette action est irréversible.</p>
-                                            </div>
-                                            <form method="POST" action="#">
-                                                @csrf
-                                                @method('DELETE')
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-outline-navy"
-                                                        data-bs-dismiss="modal">Annuler</button>
-                                                    <button type="submit" class="btn btn-navy"
-                                                        style="background:var(--red-700); border-color:var(--red-700);"><i
-                                                            class="fa-solid fa-trash me-2"></i>Supprimer</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
                             @endforeach
                         </tbody>
                     </table>
@@ -165,6 +111,66 @@
             </div>
         </div>
     </div>
+
+    {{-- ================= MODALES MODIFIER / SUPPRIMER PAR STATUT ================= --}}
+    @foreach ($statuses as $status)
+        <div class="modal fade" id="modalModifierStatut{{ $status->id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-content-registre">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modifier le statut</h5>
+                        <button type="button" class="btn-close-registre" data-bs-dismiss="modal" aria-label="Fermer"><i
+                                class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <form method="POST" action="#">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            <label for="nom_statut_{{ $status->name }}" class="form-label">Nom du statut</label>
+                            <input type="text" class="form-control" id="nom_statut_{{ $status->name }}"
+                                name="name" value="{{ $status->name }}" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-navy"
+                                data-bs-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-navy"><i class="fa-solid fa-check me-2"></i>Mettre
+                                à
+                                jour</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalSupprimerStatut{{ $status->id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-content-registre">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Supprimer le statut</h5>
+                        <button type="button" class="btn-close-registre" data-bs-dismiss="modal"
+                            aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="mb-0"><i class="fa-solid fa-triangle-exclamation me-2"
+                                style="color:var(--red-700);"></i>Voulez-vous vraiment supprimer
+                            le statut <strong>« {{ $status->name }}
+                                »</strong> ? Cette action est irréversible.</p>
+                    </div>
+                    <form method="POST" action="#">
+                        @csrf
+                        @method('DELETE')
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-navy"
+                                data-bs-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-navy"
+                                style="background:var(--red-700); border-color:var(--red-700);"><i
+                                    class="fa-solid fa-trash me-2"></i>Supprimer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>

@@ -89,9 +89,12 @@
                                     <td>{{ $item->location }}</td>
                                     <td>
                                         <div class="row-actions">
-                                            <button type="button" class="btn-action" aria-label="Modifier"><i
-                                                    class="fa-solid fa-pen"></i></button>
+                                            <button type="button" class="btn-action" data-bs-toggle="modal"
+                                                data-bs-target="#modalModifierMateriel{{ $item->id }}"
+                                                aria-label="Modifier"><i class="fa-solid fa-pen"></i></button>
                                             <button type="button" class="btn-action btn-action-danger"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#modalSupprimerMateriel{{ $item->id }}"
                                                 aria-label="Supprimer"><i class="fa-solid fa-trash"></i></button>
                                         </div>
                                     </td>
@@ -183,6 +186,131 @@
             </div>
         </div>
     </div>
+
+    {{-- ================= MODALES MODIFIER / SUPPRIMER PAR MATÉRIEL ================= --}}
+    @foreach ($items as $item)
+        <div class="modal fade" id="modalModifierMateriel{{ $item->id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content modal-content-registre">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modifier le matériel</h5>
+                        <button type="button" class="btn-close-registre" data-bs-dismiss="modal"
+                            aria-label="Fermer">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <form method="POST" action="#">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label for="code_{{ $item->id }}" class="form-label">Code</label>
+                                    <input type="text" class="form-control" id="code_{{ $item->id }}"
+                                        name="code" value="{{ $item->code }}" required>
+                                </div>
+                                <div class="col-md-8">
+                                    <label for="name_{{ $item->id }}" class="form-label">Désignation</label>
+                                    <input type="text" class="form-control" id="name_{{ $item->id }}"
+                                        name="name" value="{{ $item->name }}" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="description_{{ $item->id }}" class="form-label">Description <span
+                                            class="text-muted fw-normal">(optionnel)</span></label>
+                                    <input type="text" class="form-control" id="description_{{ $item->id }}"
+                                        name="description" value="{{ $item->description }}">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="category_id_{{ $item->id }}" class="form-label">Catégorie</label>
+                                    <select class="form-select" id="category_id_{{ $item->id }}"
+                                        name="category_id" required>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}"
+                                                {{ $item->category_id == $category->id ? 'selected' : '' }}>
+                                                {{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="status_id_{{ $item->id }}" class="form-label">Statut</label>
+                                    <select class="form-select" id="status_id_{{ $item->id }}" name="status_id"
+                                        required>
+                                        @foreach ($statuses as $status)
+                                            <option value="{{ $status->id }}"
+                                                {{ $item->status_id == $status->id ? 'selected' : '' }}>
+                                                {{ $status->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="quantity_{{ $item->id }}" class="form-label">Quantité</label>
+                                    <input type="number" min="0" class="form-control"
+                                        id="quantity_{{ $item->id }}" name="quantity"
+                                        value="{{ $item->quantity }}" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="alert_threshold_{{ $item->id }}" class="form-label">Seuil
+                                        d'alerte</label>
+                                    <input type="number" min="0" class="form-control"
+                                        id="alert_threshold_{{ $item->id }}" name="alert_threshold"
+                                        value="{{ $item->alert_threshold }}" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="location_{{ $item->id }}" class="form-label">Localisation</label>
+                                    <input type="text" class="form-control" id="location_{{ $item->id }}"
+                                        name="location" value="{{ $item->location }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-navy"
+                                data-bs-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-navy">
+                                <i class="fa-solid fa-check me-2"></i>Mettre à jour
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalSupprimerMateriel{{ $item->id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-content-registre">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Supprimer le matériel</h5>
+                        <button type="button" class="btn-close-registre" data-bs-dismiss="modal"
+                            aria-label="Fermer">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="mb-0">
+                            <i class="fa-solid fa-triangle-exclamation me-2" style="color:var(--red-700);"></i>
+                            Voulez-vous vraiment supprimer le matériel
+                            <strong>« {{ $item->name }} » ({{ $item->code }})</strong> ? Cette action est
+                            irréversible.
+                        </p>
+                    </div>
+                    <form method="POST" action="#">
+                        @csrf
+                        @method('DELETE')
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-navy"
+                                data-bs-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-navy"
+                                style="background:var(--red-700); border-color:var(--red-700);">
+                                <i class="fa-solid fa-trash me-2"></i>Supprimer
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
