@@ -669,6 +669,98 @@ a {
 }
 
 /* =========================================================
+   BANDEAUX DE MESSAGES (session success / erreurs de validation)
+   ========================================================= */
+.alert-registre {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    border: 1px solid transparent;
+    padding: .85rem 1rem;
+    margin-bottom: 1.25rem;
+    font-size: .87rem;
+}
+
+.alert-registre i {
+    font-size: 1rem;
+    margin-top: .1rem;
+    flex-shrink: 0;
+}
+
+.alert-registre .alert-registre-content {
+    flex: 1;
+}
+
+.alert-registre .alert-registre-title {
+    font-weight: 600;
+    margin-bottom: .15rem;
+    display: block;
+}
+
+.alert-registre ul {
+    margin: .25rem 0 0;
+    padding-left: 1.1rem;
+}
+
+.alert-registre ul li {
+    margin-bottom: .1rem;
+}
+
+.alert-registre-close {
+    background: transparent;
+    border: none;
+    color: inherit;
+    opacity: .7;
+    font-size: .85rem;
+    line-height: 1;
+    padding: .2rem;
+    margin-left: .5rem;
+}
+
+.alert-registre-close:hover {
+    opacity: 1;
+}
+
+.alert-registre-success {
+    background: var(--green-100);
+    border-color: #C9DFD1;
+    color: var(--green-700);
+}
+
+.alert-registre-error {
+    background: var(--red-100);
+    border-color: #F0C9C4;
+    color: var(--red-700);
+}
+
+/* =========================================================
+   PANNEAU — MATÉRIELS SOUS SEUIL D'ALERTE
+   ========================================================= */
+.alert-stock-row td {
+    vertical-align: middle;
+}
+
+.alert-stock-qty {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    color: var(--red-700);
+}
+
+.alert-stock-empty {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--ink-600);
+    font-size: .86rem;
+}
+
+.alert-stock-empty i {
+    font-size: 1.4rem;
+    color: var(--green-700);
+    display: block;
+    margin-bottom: .5rem;
+}
+
+/* =========================================================
    RESPONSIVE
    ========================================================= */
 @media (max-width: 991.98px) {

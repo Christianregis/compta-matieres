@@ -29,6 +29,43 @@
         @include('User.Layouts.Navbar')
         <div class="page-body">
 
+            {{-- ================= MESSAGES (succès / erreurs) ================= --}}
+            @if (session('success'))
+                <div class="alert-registre alert-registre-success" role="alert">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div class="alert-registre-content">
+                        <span class="alert-registre-title">Succès</span>
+                        {{ session('success') }}
+                    </div>
+                    <button type="button" class="alert-registre-close" aria-label="Fermer">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div class="alert-registre alert-registre-error" role="alert">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <div class="alert-registre-content">
+                        <span class="alert-registre-title">
+                            {{ $errors->count() > 1 ? 'Veuillez corriger les erreurs suivantes' : 'Une erreur est survenue' }}
+                        </span>
+                        @if ($errors->count() > 1)
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @else
+                            {{ $errors->first() }}
+                        @endif
+                    </div>
+                    <button type="button" class="alert-registre-close" aria-label="Fermer">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            @endif
+
             {{-- ================= ACTIONS ================= --}}
             <div class="d-flex flex-wrap justify-content-end gap-2 mb-4">
                 <button type="button" class="btn btn-outline-navy">
@@ -108,13 +145,64 @@
                                     @foreach ($items as $item)
                                         <tr>
                                             <td>{{ $item->name }}</td>
-                                            <td><span class="badge-mouvement badge-entree">{{ $item->stockmovements->first()->movementType->name }}</span></td>
+                                            <td><span
+                                                    class="badge-mouvement badge-entree">{{ $item->stockmovements->first()->movementType->name }}</span>
+                                            </td>
                                             <td>{{ $item->quantity }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- ================= MATÉRIELS SOUS SEUIL D'ALERTE ================= --}}
+            <div class="row g-3 mt-1">
+                <div class="col-12">
+                    <div class="panel">
+                        <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-1">
+                            <div>
+                                <p class="panel-title mb-0">Matériels sous seuil d'alerte</p>
+                                <p class="panel-subtitle mb-0">Fiches dont la quantité est inférieure ou égale au seuil
+                                    paramétré</p>
+                            </div>
+                        </div>
+
+                        @if (($lowStockItems ?? collect())->isNotEmpty())
+                            <div class="table-responsive">
+                                <table class="table table-registre mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Matériel</th>
+                                            <th>Catégorie</th>
+                                            <th>Quantité</th>
+                                            <th>Seuil d'alerte</th>
+                                            <th>Localisation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($lowStockItems as $lowStockItem)
+                                            <tr class="alert-stock-row">
+                                                <td class="item-code">{{ $lowStockItem->code }}</td>
+                                                <td class="item-name">{{ $lowStockItem->name }}</td>
+                                                <td>{{ $lowStockItem->category->name ?? '—' }}</td>
+                                                <td class="alert-stock-qty">{{ $lowStockItem->quantity }}</td>
+                                                <td>{{ $lowStockItem->alert_threshold }}</td>
+                                                <td>{{ $lowStockItem->location ?? '—' }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @else
+                            <div class="alert-stock-empty">
+                                <i class="fa-solid fa-circle-check"></i>
+                                Aucun matériel sous le seuil d'alerte pour le moment.
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -131,6 +219,13 @@
 
         btnToggleSidebar.addEventListener('click', function() {
             sidebar.classList.toggle('show');
+        });
+
+        // Fermeture des bandeaux de messages (succès / erreurs)
+        document.querySelectorAll('.alert-registre-close').forEach(function(bouton) {
+            bouton.addEventListener('click', function() {
+                bouton.closest('.alert-registre').remove();
+            });
         });
 
         // Graphique : répartition des matériels par catégorie

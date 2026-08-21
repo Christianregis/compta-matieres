@@ -33,7 +33,11 @@ class DashboardController extends Controller
                 ->values(),
             'items' => $user->items()->whereHas('stockmovements')->with(['stockmovements' => function ($query) {
                 $query->latest('created_at')->with('movementType');
-            }])->withMax('stockmovements', 'created_at')->orderByDesc('stockmovements_max_created_at')->limit(5)->get()
+            }])->withMax('stockmovements', 'created_at')->orderByDesc('stockmovements_max_created_at')->limit(5)->get(),
+            'lowStockItems' => $user->items()
+                ->whereColumn('quantity', '<=', 'alert_threshold')
+                ->with('category')
+                ->get(),
         ]);
     }
 }
