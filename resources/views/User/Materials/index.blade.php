@@ -47,18 +47,16 @@
                     </div>
                     <select class="filter-select">
                         <option selected>Toutes les catégories</option>
-                        <option>Matériel informatique</option>
-                        <option>Matériel scientifique de laboratoire</option>
-                        <option>Mobilier</option>
-                        <option>Matériel électrique</option>
+                        @foreach ($categories as $category)
+                            <option>{{ $category->name }}</option>
+                        @endforeach
+
                     </select>
                     <select class="filter-select">
                         <option selected>Tous les statuts</option>
-                        <option>Neuf</option>
-                        <option>Bon état</option>
-                        <option>En réparation</option>
-                        <option>En panne</option>
-                        <option>Obsolète</option>
+                        @foreach ($statuses as $status)
+                            <option>{{ $status->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -80,142 +78,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="item-code">SM-2026-0184</td>
-                                <td class="item-name">Microscope binoculaire</td>
-                                <td>Matériel scientifique de laboratoire</td>
-                                <td><span class="badge-status status-bon">Bon état</span></td>
-                                <td>07</td>
-                                <td>02</td>
-                                <td>Magasin central</td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button type="button" class="btn-action" aria-label="Modifier"><i
-                                                class="fa-solid fa-pen"></i></button>
-                                        <button type="button" class="btn-action btn-action-danger"
-                                            aria-label="Supprimer"><i class="fa-solid fa-trash"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="item-code">SM-2026-0175</td>
-                                <td class="item-name">Ordinateur de bureau HP</td>
-                                <td>Matériel informatique</td>
-                                <td><span class="badge-status status-neuf">Neuf</span></td>
-                                <td>15</td>
-                                <td>05</td>
-                                <td>Salle informatique 1</td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button type="button" class="btn-action" aria-label="Modifier"><i
-                                                class="fa-solid fa-pen"></i></button>
-                                        <button type="button" class="btn-action btn-action-danger"
-                                            aria-label="Supprimer"><i class="fa-solid fa-trash"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="item-code">SM-2026-0162</td>
-                                <td class="item-name">Chaises de bureau</td>
-                                <td>Mobilier</td>
-                                <td><span class="badge-status status-bon">Bon état</span></td>
-                                <td>32</td>
-                                <td>10</td>
-                                <td>Magasin central</td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button type="button" class="btn-action" aria-label="Modifier"><i
-                                                class="fa-solid fa-pen"></i></button>
-                                        <button type="button" class="btn-action btn-action-danger"
-                                            aria-label="Supprimer"><i class="fa-solid fa-trash"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="item-code">SM-2026-0148</td>
-                                <td class="item-name">Onduleur 1000VA</td>
-                                <td>Matériel électrique</td>
-                                <td><span class="badge-status status-reparation">En réparation</span></td>
-                                <td>02</td>
-                                <td>03</td>
-                                <td>Atelier technique</td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button type="button" class="btn-action" aria-label="Modifier"><i
-                                                class="fa-solid fa-pen"></i></button>
-                                        <button type="button" class="btn-action btn-action-danger"
-                                            aria-label="Supprimer"><i class="fa-solid fa-trash"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="item-code">SM-2026-0139</td>
-                                <td class="item-name">Vidéoprojecteur Epson</td>
-                                <td>Matériel audiovisuel</td>
-                                <td><span class="badge-status status-panne">En panne</span></td>
-                                <td>01</td>
-                                <td>01</td>
-                                <td>Amphi 200</td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button type="button" class="btn-action" aria-label="Modifier"><i
-                                                class="fa-solid fa-pen"></i></button>
-                                        <button type="button" class="btn-action btn-action-danger"
-                                            aria-label="Supprimer"><i class="fa-solid fa-trash"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="item-code">SM-2026-0121</td>
-                                <td class="item-name">Climatiseur split 2CV</td>
-                                <td>Matériel de climatisation</td>
-                                <td><span class="badge-status status-bon">Bon état</span></td>
-                                <td>04</td>
-                                <td>02</td>
-                                <td>Bloc administratif</td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button type="button" class="btn-action" aria-label="Modifier"><i
-                                                class="fa-solid fa-pen"></i></button>
-                                        <button type="button" class="btn-action btn-action-danger"
-                                            aria-label="Supprimer"><i class="fa-solid fa-trash"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="item-code">SM-2026-0098</td>
-                                <td class="item-name">Armoire métallique</td>
-                                <td>Mobilier</td>
-                                <td><span class="badge-status status-obsolete">Obsolète</span></td>
-                                <td>06</td>
-                                <td>02</td>
-                                <td>Magasin central</td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button type="button" class="btn-action" aria-label="Modifier"><i
-                                                class="fa-solid fa-pen"></i></button>
-                                        <button type="button" class="btn-action btn-action-danger"
-                                            aria-label="Supprimer"><i class="fa-solid fa-trash"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="item-code">SM-2026-0076</td>
-                                <td class="item-name">Multimètre numérique</td>
-                                <td>Matériel de mesure et de précision</td>
-                                <td><span class="badge-status status-reforme">À réformer</span></td>
-                                <td>03</td>
-                                <td>02</td>
-                                <td>Atelier technique</td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button type="button" class="btn-action" aria-label="Modifier"><i
-                                                class="fa-solid fa-pen"></i></button>
-                                        <button type="button" class="btn-action btn-action-danger"
-                                            aria-label="Supprimer"><i class="fa-solid fa-trash"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach ($items as $item)
+                                <tr>
+                                    <td class="item-code">{{ $item->code }}</td>
+                                    <td class="item-name">{{ $item->name }}</td>
+                                    <td>Matériel scientifique de laboratoire</td>
+                                    <td><span class="badge-status status-bon">{{ $item->status->name }}</span></td>
+                                    <td>{{ $item->quantity }}</td>
+                                    <td>{{ $item->alert_threshold }}</td>
+                                    <td>{{ $item->location }}</td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button type="button" class="btn-action" aria-label="Modifier"><i
+                                                    class="fa-solid fa-pen"></i></button>
+                                            <button type="button" class="btn-action btn-action-danger"
+                                                aria-label="Supprimer"><i class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -234,7 +115,7 @@
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
-                <form method="POST" action="#">
+                <form method="POST" action="{{ route('user.items.save') }}">
                     @csrf
                     <div class="modal-body">
                         <div class="row g-3">
@@ -260,24 +141,18 @@
                                 <label for="category_id" class="form-label">Catégorie</label>
                                 <select class="form-select" id="category_id" name="category_id" required>
                                     <option value="" selected disabled>Sélectionner une catégorie</option>
-                                    <option value="1">Matériel informatique</option>
-                                    <option value="2">Matériel scientifique de laboratoire</option>
-                                    <option value="3">Mobilier</option>
-                                    <option value="4">Matériel électrique</option>
-                                    <option value="5">Matériel audiovisuel</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label for="status_id" class="form-label">Statut</label>
                                 <select class="form-select" id="status_id" name="status_id" required>
                                     <option value="" selected disabled>Sélectionner un statut</option>
-                                    <option value="1">Neuf</option>
-                                    <option value="2">Bon état</option>
-                                    <option value="3">En réparation</option>
-                                    <option value="4">En panne</option>
-                                    <option value="5">Obsolète</option>
-                                    <option value="6">Hors d'usage</option>
-                                    <option value="7">À réformer</option>
+                                    @foreach ($statuses as $status)
+                                        <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 

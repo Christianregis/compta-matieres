@@ -31,7 +31,9 @@ class DashboardController extends Controller
                     ];
                 })
                 ->values(),
-            'items' => $user->items()->with('stockmovements', 'stockmovements.movementType')->orderBy('created_at', 'desc')->limit(5)->get()
+            'items' => $user->items()->whereHas('stockmovements')->with(['stockmovements' => function ($query) {
+                $query->latest('created_at')->with('movementType');
+            }])->withMax('stockmovements', 'created_at')->orderByDesc('stockmovements_max_created_at')->limit(5)->get()
         ]);
     }
 }

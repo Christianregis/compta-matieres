@@ -18,13 +18,13 @@
             <a href="{{ route('user.category.show') }}" class="sidebar-link">
                 <i class="fa-solid fa-tags"></i> Catégories
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('user.status.show') }}" class="sidebar-link">
                 <i class="fa-solid fa-circle-check"></i> Statuts
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('user.movements.show') }}" class="sidebar-link">
                 <i class="fa-solid fa-right-left"></i> Mouvements
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('user.movements.show') }}" class="sidebar-link">
                 <i class="fa-solid fa-chart-column"></i> Rapports
             </a>
 
